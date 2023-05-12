@@ -1,0 +1,6 @@
+<form method="POST">
+  {% csrf_token %}
+  {{ orden_form.as_p }}
+  {{ detalle_form.as_p }}
+  <input type="submit" value="Crear orden de compra">
+</form>

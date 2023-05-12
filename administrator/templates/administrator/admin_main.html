@@ -1,0 +1,25 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+
+<main role="main">
+    <!-- <div class="container col-12 mt-3"> -->
+    <!-- <div class="col-12  mt-3 border"> -->
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <div class="col-12 col-sm-3 mb-3"></div>
+        <h2 class="mb-3 text-blue text-center">PANEL DE ADMINISTRACIÓN{{request.user.first_name}} {{request.user.last_name}}</h2>
+        <!-- <h3>Panel de administracion{{request.user.first_name}} {{request.user.last_name}} </h3> -->
+        <a href="{% url 'users_main' %}" class="btn btn-dark" style="background-color: #000000;" type="button">Gestión Usuarios</a>
+        <div class="col-12 col-sm-3 mb-3"></div>
+        <a href="{% url 'ejemplos_main' %}" class="btn btn-dark" style="background-color: #000000;" type="button">Gestión Productos</a>
+        <div class="col-12 col-sm-3 mb-3"></div>
+        <a href="{% url 'proveedor_main' %}" class="btn btn-dark" style="background-color: #000000;" type="button">Gestión Proveedores</a>
+        <div class="col-12 col-sm-3 mb-3"></div>
+        <a href="{% url 'clientes_main' %}" class="btn btn-dark" style="background-color: #000000;" type="button">Gestión Clientes</a>
+        <div class="col-12 col-sm-3 mb-3"></div>
+        <a href="{% url 'order_main' %}" class="btn btn-dark" style="background-color: #000000;" type="button">Gestión Compras</a>
+        
+    </div>
+  
+</main>
+{% endblock %}

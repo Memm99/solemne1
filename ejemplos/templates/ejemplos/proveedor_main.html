@@ -1,0 +1,55 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+<div class="col-md-11">
+    <div class="mb-3">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <!-- <div class="col-30  mt-4 border"> -->
+                    <h1 class="mb-3 text-blue text-center">GESTIÓN PROVEEDORES</h1>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card bg-skin" style="width: auto;">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3 text-blue text-center"></h5>
+                            <div class="d-flex justify-content-center mx-0-5--custom">
+                                <p class="card-text"></p>
+                            </div>
+                            <div class="d-flex justify-content-center mx-0-5--custom mt-2">
+                                <a href="{% url 'listar_proveedor' %}" class="btn btn-dark" >
+                                    Lista de Proveedores
+                                </a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="{% url 'agregar_proveedor' %}" class="btn btn-dark" >
+                                    Nuevo Proveedor
+                                </a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn btn-dark" >
+                                    Carga masiva de Proveedor
+                                </a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div class="d-flex justify-content-center mx-0-5--custom mt-2">
+                                <a href="{% url 'ejemplos_proyect_list' %}" class="btn btn-dark" >
+                                    Lista de proyecto
+                                </a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="{% url 'ejemplos_proyect_new' %}" class="btn btn-dark" >
+                                    Nuevo proyecto
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>                                   
+            </div>
+            <th colspan="1">
+                <div class="row">
+                    <div class="col-12 col-sm-12">
+                        <a href="{% url 'admin_main' %}" class="btn btn-dark form-control">Volver</a>
+                   </div>
+                </div>
+            </th>
+        </div>            
+    </div>
+</div>    
+{% endblock %}

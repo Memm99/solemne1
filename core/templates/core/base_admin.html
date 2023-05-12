@@ -1,0 +1,93 @@
+{% load manifest %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>TU PANEL</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone" rel="stylesheet">
+        <link href="{% manifest 'styles.scss' %}"rel="stylesheet">
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        <link href="{% static 'css/index.css' %}" rel="stylesheet">
+
+    </head>
+    <body>
+        <nav id="sidebar" class='side-bar to-left'>
+            <header class='my-xxl-4 my-1 mb-5'>
+                <div id="expand-side-bar" class="float-button">
+                    <div class="m-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="30px"
+                            viewBox="0 0 24 24" width="30px"
+                            fill="#1F2547">
+                            <g>
+                                <rect fill="none" height="24" width="24"/>
+                            </g>
+                            <g>
+                                <g>
+                                    <polygon points="15.5,5 11,5 16,12 11,19 15.5,19 20.5,12"/>
+                                    <polygon points="8.5,5 4,5 9,12 4,19 8.5,19 13.5,12"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <a href="">
+                    <img class="logo my-2" src="{% static 'assets/svg/logo.svg' %}" alt="logos"/>
+                </a>
+                <div style="display: flex; flex-direction: column;align-items: center;">
+                    <div class="avatar-normal-container">
+                        <img src="{% static 'assets/img/no-avatar.jpg' %}" alt="avatar">
+                    </div>
+                </div>
+            </header>
+            <div class='menu'>
+                <!--=== Menu Administrador ===-->  
+                {% if template_name == 'admin_main.html' %}
+                    <a href="{% url 'admin_main' %}" class='item active'>
+                {% else %}
+                    <a href="{% url 'admin_main' %}" class='item'>
+                {% endif %}
+                    <span class="material-icons-outlined">
+                        admin_panel_settings
+                    </span>
+                    <p class='body--small'>Administrador</p>
+                </a>
+                <!--=== Fin Menú Admin ===-->   
+                <!--=== Menu Ejemplos ===-->  
+                {% if template_name == 'ejemplos/ejemplos_main.html' or template_name == 'ejemplos/ejemplos_add.html' or template_name == 'ejemplos/ejemplos_habilidad_ver.html' or template_name == 'ejemplos/ejemplos_list_habilidades.html' or template_name == 'ejemplos/ejemplos_carga_masiva.html'%}
+                    <a href="{% url 'ejemplos_main' %}" class='item active'>
+                {% else %}
+                    <a href="{% url 'ejemplos_main' %}" class='item'>
+                {% endif %}
+                    <span class="material-icons-outlined">
+                        library_books
+                    </span>
+                    <p class='body--small'>Gestion De Productos</p>
+                </a>
+                <!--=== Fin Menú Ejemplos ===-->   
+            </div>
+            <div class='side-bar-footer mb-5'>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                    {% endif %}
+                    <button class='button' type="submit">Cerrar Sesión</button>
+                    </form>                    
+            </div>
+        </nav>
+        <div class='dashboard-container'>
+            {% block content %}{% endblock %}
+        </div>
+        <script src="{% manifest 'sidebar.js' %}"></script>
+        <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    </body>
+</html>

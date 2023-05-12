@@ -1,0 +1,11 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+{% load humanize%}
+<h3>¿Estás seguro que deseas eliminar la orden de compra?</h3>
+<p>{{ orden }}</p>
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Eliminar">
+</form>
+{% endblock %}

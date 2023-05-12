@@ -1,0 +1,52 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="{% static '/registration/css/styles.css' %}" rel="stylesheet">
+</head>
+<div class="background-blur">
+<body>
+  <section>
+    {% if 'register' in request.GET %}
+    <p style="color: green">Usuario registrado correctamente</p>
+    {% endif%}
+    <div class="container">
+      <div class="login-container">
+        <h4 class="mb-3 text-blue text-center">Ingrese sus datos</h4>
+        {% if form.non_field_errors %}
+        <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+        {% endif %}
+        <form class="login-form" action="" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="user" class="form-label">Usuario</label>
+            <input type="text" name="username" class="form-control" />
+            <span class="feedback body-small text-regular"></span>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" name="password" class="form-control" id="password" />
+            <span class="feedback body-small text-regular"></span>
+          </div>
+          <div class="d-flex justify-content-end mb-3">
+            <a class="body-normal text-blue text-decoration-underline cursor-pointer">Olvidé mi
+              contraseña</a>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">
+              <span>Iniciar Sesión</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</body>
+</div>
+
+</html>
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+{% load humanize%}
+<form method="post" action="{% url 'ejemplos_proyect_save' %}">
+    {% csrf_token %}
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+    </div>
+    <div>
+      <label for="precio">Precio:</label>
+      <input type="text" id="precio" name="precio" required>
+    </div>
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion" name="descripcion" required>
+    </div>
+    <div>
+      <label for="talla">Talla:</label>
+      <input type="text" id="talla" name="talla" required>
+    </div>
+    <div>
+      <label for="categoria">Categoría:</label>
+      <input type="text" id="categoria" name="categoria_id" required>
+    </div>
+    <div>
+      <label for="proveedor">Proveedor:</label>
+      <select id="proveedor" name="proveedor" multiple required>
+        {% for proveedor in proveedor_list %}
+          <option value="{{ proveedor.id }}">{{ proveedor.nombre }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <input type="submit" value="Guardar">
+    </div>
+  </form>
+  
+{% endblock %}
+
+

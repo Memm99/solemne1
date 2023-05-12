@@ -1,0 +1,52 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+{% load humanize%}
+<form method="post" action="{% url 'ejemplos_proyect_edit_save' %}">
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ producto_data.id }}">
+    
+    <div>
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" value="{{ producto_data.nombre }}" required>
+    </div>
+    
+    <div>
+      <label for="precio">Precio:</label>
+      <input type="text" id="precio" name="precio" value="{{ producto_data.precio }}" required>
+    </div>
+    
+    <div>
+      <label for="descripcion">Descripción:</label>
+      <input type="text" id="descripcion" name="descripcion" value="{{ producto_data.descripcion }}" required>
+    </div>
+    
+    <div>
+      <label for="talla">Talla:</label>
+      <input type="text" id="talla" name="talla" value="{{ producto_data.talla }}" required>
+    </div>
+    
+    <div>
+      <label for="categoria">Categoría:</label>
+      <input type="text" id="categoria" name="categoria_id" value="{{ producto_data.categoria_id }}" required>
+    </div>
+    
+    <div>
+      <label for="proveedor">Proveedor:</label>
+      <select id="proveedor" name="proveedor" multiple required>
+        {% for proveedor in proveedor_list %}
+          {% if proveedor.id in proveedor_data_list %}
+            <option value="{{ proveedor.id }}" selected>{{ proveedor.nombre }}</option>
+          {% else %}
+            <option value="{{ proveedor.id }}">{{ proveedor.nombre }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+    
+    <div>
+      <input type="submit" value="Guardar">
+    </div>
+  </form>
+  
+{% endblock %}

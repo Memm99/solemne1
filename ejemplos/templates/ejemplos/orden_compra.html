@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<style>
+        h1 {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  padding: 10px;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gestión de órdenes de compra</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <h1>Órdenes de compra</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>ID de orden</th>
+          <th>Proveedor</th>
+          <th>Fecha de pedido</th>
+          <th>Fecha de entrega</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.supplier }}</td>
+          <td>{{ order.order_date }}</td>
+          <td>{{ order.delivery_date }}</td>
+          <td>{{ order.status }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

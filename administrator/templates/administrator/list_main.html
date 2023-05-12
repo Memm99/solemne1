@@ -1,0 +1,17 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+   <main role="main">
+        <div class="d-grid gap-2 col-6 mx-auto">
+                <h1 class="mb-3 text-blue text-center">LISTADO PERFIL</h1>
+                <a href="{% url 'list_user_active' group.id %}" class="btn btn-dark" style="background-color: #000000;" type="button">Usuarios activos</a>
+                <div class="col-12 col-sm-3 mb-3"></div>
+                <a href="{% url 'list_user_block' group.id %}" class="btn btn-dark" style="background-color: #000000;"
+                    type="button">Usuarios bloqueados</a>
+                <div class="col-12 col-sm-3 mb-3"></div>
+                <a href="{% url 'users_main' %}" class="btn btn-dark" style="background-color: #000000;"
+                    type="button">Volver</a>
+            <!-- </div> -->
+        </div>
+    </main>
+{% endblock %}

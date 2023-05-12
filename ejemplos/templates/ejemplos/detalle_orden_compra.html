@@ -1,0 +1,39 @@
+
+
+{% block content %}
+  <h2>Detalle de Orden de Compra</h2>
+  <table>
+    <tr>
+      <th>Proveedor</th>
+      <th>Fecha de Creación</th>
+      <th>Fecha de Entrega</th>
+      <th>Total</th>
+    </tr>
+    <tr>
+      <td>{{ orden.proveedor }}</td>
+      <td>{{ orden.fecha_creacion }}</td>
+      <td>{{ orden.fecha_entrega }}</td>
+      <td>{{ orden.total }}</td>
+    </tr>
+  </table>
+
+  <h3>Productos</h3>
+  <table>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+      <th>Total</th>
+    </tr>
+    {% for detalle in orden.detalleordencompra_set.all %}
+      <tr>
+        <td>{{ detalle.producto }}</td>
+        <td>{{ detalle.cantidad }}</td>
+        <td>{{ detalle.precio_unitario }}</td>
+        <td>{{ detalle.total }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  <a href="{% url 'lista_ordenes_compra' %}">Volver a la lista de Órdenes de Compra</a>
+{% endblock %}

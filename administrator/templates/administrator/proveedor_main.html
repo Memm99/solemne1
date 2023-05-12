@@ -1,0 +1,29 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+
+<main role="main">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <!-- <div class="col-30  mt-4 border"> -->
+            <h1 class="mb-3 text-blue text-center">GESTIÓN DE PROVEEDOR</h1>
+            <!-- <div class="row mt-4 mb-4"></div> -->
+            {% if profiles.group_id == 1%}
+            <a href="{% url 'new_proveedor' %}" class="btn btn-dark" style="background-color: #000000;" type="button">Nuevo
+                Proveedor</a>
+            {% endif %}
+            {% for g in groups %}
+            <div class="col-12 col-sm-3 mb-3"></div>
+            <a href="{% url 'list_prov' g.id %}" class="btn btn-dark" style="background-color: #000000;"
+                type="button">{{g.name}}</a>
+            {% endfor %} 
+            <div class="col-12 col-sm-3 mb-3"></div>
+            <a href="{% url 'masiva_proveedores' %}" class="btn btn-dark" style="background-color: #000000;"
+                type="button">Carga Masiva</a>
+            <div class="col-12 col-sm-3 mb-3"></div>
+            <a href="{% url 'admin_main' %}" class="btn btn-dark" style="background-color: #000000;"
+                type="button">Volver</a>
+            
+        <!-- </div> -->
+    </div>
+</main>
+{% endblock %}

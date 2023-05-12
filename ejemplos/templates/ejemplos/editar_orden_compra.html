@@ -1,0 +1,12 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+{% load humanize%}
+<form method="POST">
+  {% csrf_token %}
+  {{ orden_form.as_p }}
+  {{ detalle_form.as_p }}
+  <input type="submit" value="Guardar cambios">
+</form>
+
+{% endblock %}

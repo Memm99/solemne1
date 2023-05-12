@@ -1,0 +1,64 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+{% load humanize%}
+<div class="card">
+    <div class="card body">
+        <h2>LISTADO DE CLIENTES</h2>
+    </div>
+</div>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>Nombre</th>
+        <th>Nombre2</th>
+        <th>Nombre3</th>
+        <th>Apellido1</th>
+        <th>Apellido2</th>
+        <th>Correo</th>
+        <th>Celular</th>
+        <th>Edad</th>
+        <th>Codigo postal</th>
+        <th>Opciones</th>
+    </tr>
+
+    {% for p in clientes %}
+    <tr>
+        <td>{{p.nombre1 | title}}</td>
+        <td>{{p.nombre2 | title}}</td>
+        <td>{{p.nombre3 | title}}</td>
+        <td>{{p.apellido1 | title}}</td>
+        <td>{{p.apellido2 | title}}</td>
+        <td>{{p.correo_electronico | title}}</td>
+        <td>{{p.celular | title}}</td>
+        <td>{{p.edad | title}}</td>
+        <td>{{p.direccion_postal | title}}</td>
+        <td>
+            <a href="{% url 'actualizar_cliente' p.id %}" class="btn btn-success">Modificar</a>
+            <a href="{% url 'eliminar_cliente' p.id %}" class="btn btn-danger">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+<th colspan="1">
+    <div class="row">
+        <div class="col-12 col-sm-12">
+            <a href="{% url 'clientes_main' %}" class="btn btn-danger form-control">Volver</a>
+        </div>
+    </div>
+</th>
+
+
+{% if messages %}
+{% for me in messages %}
+<script>
+    Swal.fire({
+        "title": "ATENCION",
+        "text": "{{me}}",
+        "icon": "success",
+    })
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

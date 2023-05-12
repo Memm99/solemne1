@@ -1,0 +1,75 @@
+{% extends "administrator/index_main.html" %}
+{% load static %}
+{% block content %}
+
+ 
+<main role="main">
+        <div class="container col-12 mt-3">
+            <div class="col-12  mt-3 border">
+                <h3>Nuevo Usuario</h3> 
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row"> 
+                        <div class="col-12 col-sm-8 mb-3">
+                            <label for="rut">Rut</label>
+                            <input type="text" name="rut"  required oninput="checkRut(this)" autofocus maxlength="254" required id="id_rut" class="form-control border border-dark" placeholder="Rut (Ej: 17605812-2)"/>
+                        </div>  
+                        <div class="col-12 col-sm-4 mb-3">
+                            <label for="email">Perfil</label>
+                            <select name="grupo" id="grupo" class="form-control border border-dark" required>
+                                <option value="">----------</option>
+                                {% for g in groups %}
+                                <option value="{{g.id}}">{{g.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>  
+                    </div>    
+                    <div class="row">                       
+                        <div class="col-12 col-sm-4 mb-3">
+                            <label for="name">Nombre (*)</label>
+                            <input type="text" class="form-control border border-dark" id="name" name="name" autofocus maxlength="254" required/>
+                        </div>
+                        <div class="col-12 col-sm-4 mb-3">
+                            <label for="last_name">Apellidos</label>
+                            <input type="text" class="form-control border border-dark" id="last_name1" name="last_name1" required/>
+                        </div>                        
+                        <div class="col-12 col-sm-4 mb-3">
+                            <label for="mobile">Celular</label>
+                            <input type="number" class="form-control border border-dark" id="mobile" name="mobile"/>
+                        </div>                        
+                    </div>
+                    <div class="row"> 
+                        <div class="col-12 col-sm-8 mb-3">
+                            <label for="email">Correo (*)</label>
+                            <input type="email" class="form-control border border-dark" placeholder="nombre@uautonoma.cl" name="email"/>
+                        </div>
+                        <div class="col-12 col-sm-4 mb-3">
+                            <label for="position">Cargo</label>
+                            <input type="position" class="form-control border border-dark" placeholder="Cargo" name="position" required/>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-12 col-sm-6 mb-3">
+                            <input type="submit" value="Crear Usuario" class="btn btn-dark form-control"style="background-color: #000000;">
+                        </div>
+                        <div class="col-12 col-sm-6 mb-3">
+                            <a href="{% url 'users_main' %}" class="btn btn-dark form-control"style="background-color: #000000;">Volver</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    {% if messages %}
+        {% for me in messages %}
+        <script>
+            Swal.fire({
+                "title": "USUARIO",
+                "text": "{{me}}",
+                "icon": "success",
+            })
+        </script>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
