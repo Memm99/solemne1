@@ -8,5 +8,5 @@ xlrd
 pandas
 django-mathfilters
 djangorestframework
-psycopg2==2.8.5
+# psycopg2==2.8.5
 djangorestframework==3.11.2
